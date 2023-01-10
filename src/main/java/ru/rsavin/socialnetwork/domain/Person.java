@@ -1,9 +1,14 @@
-package ru.rsavin.socialnetwork.web.dto;
+package ru.rsavin.socialnetwork.domain;
 
+import lombok.Builder;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
-public class RegisterAccountDto {
+@Builder
+public class Person {
+    private String id;
     private String firstName;
     private String secondName;
     private Integer age;

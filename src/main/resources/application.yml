@@ -1,1 +1,5 @@
-
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:3306/social_network
+    username: postgres
+    password: P@ssw0rd
