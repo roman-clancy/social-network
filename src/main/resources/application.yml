@@ -6,6 +6,6 @@ spring:
     hibernate:
       ddl-auto: create
   datasource:
-    url: jdbc:postgresql://localhost:5432/social_network?createIfNotExists=true
+    url: jdbc:postgresql://localhost:5432/social_network
     username: postgres
     password: P@ssw0rd

@@ -32,4 +32,9 @@ public class PersonController {
         Person p = personService.getById(id);
         return ResponseEntity.ok(EntityMapper.fromPerson(p));
     }
+
+    @GetMapping("/health")
+    public ResponseEntity<String> health() {
+        return ResponseEntity.ok("Its working");
+    }
 }

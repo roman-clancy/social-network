@@ -33,13 +33,13 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    //@Bean
+    @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.httpBasic()
                 .and()
                 .authorizeRequests()
-                .mvcMatchers("")
-                .authenticated()
+                    .anyRequest()
+                    .permitAll()
                 .and().build();
     }
 }

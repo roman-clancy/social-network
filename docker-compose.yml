@@ -1,17 +1,21 @@
 version: '3.1'
 
 services:
-
+  app:
+    build:
+      context: .
+    container_name: social-network-app
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/social_network
+    ports:
+      - 8080:8080
   db:
     image: postgres:15.1
-    restart: always
+    container_name: db
     ports:
       - 5432:5432
     environment:
       POSTGRES_PASSWORD: P@ssw0rd
       POSTGRES_DB: social_network
-  app:
-    image: rsavin/social-network
-    restart: always
-    ports:
-      - 8080:8080

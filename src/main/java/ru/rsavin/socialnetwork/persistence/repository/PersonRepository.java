@@ -19,12 +19,6 @@ public class PersonRepository {
     public PersonRepository(DataSource dataSource) {
         jdbcTemplate = new JdbcTemplate(dataSource);
         jdbcInsert = new SimpleJdbcInsert(dataSource).withTableName(Constants.PERSON_TABLE);
-        Person p = Person.builder()
-                .firstName("123")
-                .secondName("123")
-                .password("123")
-                .build();
-        save(p);
     }
 
     public String save(Person person) {
