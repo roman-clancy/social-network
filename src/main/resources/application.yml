@@ -1,4 +1,7 @@
 spring:
+  liquibase:
+    change-log: classpath:db/changelog-master.xml
+    enabled: true
   sql:
     init:
       mode: always
