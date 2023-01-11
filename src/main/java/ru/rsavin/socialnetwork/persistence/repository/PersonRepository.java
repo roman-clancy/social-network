@@ -19,6 +19,12 @@ public class PersonRepository {
     public PersonRepository(DataSource dataSource) {
         jdbcTemplate = new JdbcTemplate(dataSource);
         jdbcInsert = new SimpleJdbcInsert(dataSource).withTableName(Constants.PERSON_TABLE);
+        Person p = Person.builder()
+                .firstName("123")
+                .secondName("123")
+                .password("123")
+                .build();
+        save(p);
     }
 
     public String save(Person person) {
@@ -27,9 +33,6 @@ public class PersonRepository {
                 "id", id,
                 Constants.PERSON_FIRST_NAME_COL, person.getFirstName(),
                 Constants.PERSON_SECOND_NAME_COL, person.getSecondName(),
-                Constants.PERSON_AGE_COL, person.getAge(),
-                Constants.PERSON_BIOGRAPHY_COL, person.getBiography(),
-                Constants.PERSON_CITY_COL, person.getCity(),
                 Constants.PERSON_PASSWORD_COL, person.getPassword()
         );
         jdbcInsert.execute(params);
@@ -40,5 +43,4 @@ public class PersonRepository {
         final String query = "SELECT * FROM person WHERE ID = ?";
         return jdbcTemplate.queryForObject(query, new PersonRowMapper(), id);
     }
-
 }

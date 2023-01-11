@@ -1,5 +1,11 @@
 spring:
+  sql:
+    init:
+      mode: always
+  jpa:
+    hibernate:
+      ddl-auto: create
   datasource:
-    url: jdbc:postgresql://localhost:3306/social_network
+    url: jdbc:postgresql://localhost:5432/social_network?createIfNotExists=true
     username: postgres
     password: P@ssw0rd
