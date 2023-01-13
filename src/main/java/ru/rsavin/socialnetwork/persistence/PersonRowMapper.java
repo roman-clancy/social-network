@@ -15,6 +15,7 @@ public class PersonRowMapper implements RowMapper<Person> {
                 .age(rs.getInt(Constants.PERSON_AGE_COL))
                 .biography(rs.getString(Constants.PERSON_BIOGRAPHY_COL))
                 .city(rs.getString(Constants.PERSON_CITY_COL))
+                .password(rs.getString(Constants.PERSON_PASSWORD_COL))
                 .build();
     }
 }

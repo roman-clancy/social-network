@@ -8,6 +8,7 @@ import ru.rsavin.socialnetwork.persistence.Constants;
 import ru.rsavin.socialnetwork.persistence.PersonRowMapper;
 
 import javax.sql.DataSource;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
@@ -23,12 +24,15 @@ public class PersonRepository {
 
     public String save(Person person) {
         String id = UUID.randomUUID().toString();
-        Map<String, Object> params = Map.of(
-                "id", id,
-                Constants.PERSON_FIRST_NAME_COL, person.getFirstName(),
-                Constants.PERSON_SECOND_NAME_COL, person.getSecondName(),
-                Constants.PERSON_PASSWORD_COL, person.getPassword()
-        );
+        Map<String, Object> params = new HashMap<>() {{
+            put("id", id);
+            put(Constants.PERSON_FIRST_NAME_COL, person.getFirstName());
+            put(Constants.PERSON_SECOND_NAME_COL, person.getSecondName());
+            put(Constants.PERSON_PASSWORD_COL, person.getPassword());
+            if (person.getBiography() != null) put(Constants.PERSON_BIOGRAPHY_COL, person.getBiography());
+            if (person.getCity() != null) put(Constants.PERSON_CITY_COL, person.getCity());
+            if (person.getAge() != null) put(Constants.PERSON_AGE_COL, person.getAge());
+        }};
         jdbcInsert.execute(params);
         return id;
     }
