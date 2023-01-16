@@ -41,6 +41,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
+							"pm.collectionVariables.set(\"last_generated_user_id_quoted\", JSON.stringify(responseBody));",
 							"pm.collectionVariables.set(\"last_generated_user_id\", responseBody);"
 						],
 						"type": "text/javascript"
@@ -80,7 +81,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/user/{{last_generated_user_id}}",
+					"raw": "http://localhost:8080/user/:id",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -88,7 +89,13 @@
 					"port": "8080",
 					"path": [
 						"user",
-						"{{last_generated_user_id}}"
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "{{last_generated_user_id}}"
+						}
 					]
 				}
 			},
@@ -148,6 +155,10 @@
 			"key": "default_biography",
 			"value": "\"Jack Daniel's is a brand of Tennessee whiskey\"",
 			"type": "string"
+		},
+		{
+			"key": "last_generated_user_id_quoted",
+			"value": ""
 		}
 	]
 }
