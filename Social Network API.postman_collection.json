@@ -41,7 +41,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.collectionVariables.set(\"last_generated_user_id\", '\"'+responseBody+'\"');"
+							"pm.collectionVariables.set(\"last_generated_user_id\", responseBody);"
 						],
 						"type": "text/javascript"
 					}
