@@ -30,6 +30,21 @@ class PostRepositoryImpl(
         return id
     }
 
+    override fun update(post: Post): Boolean {
+        val query = "UPDATE post SET text = ? WHERE id = ? and author_id = ?"
+        return jdbcTemplate.update(query, post.text, post.id, post.authorId) > 0
+    }
+
+    override fun delete(post: Post): Boolean {
+        val query = "DELETE FROM post WHERE id = ? and author_id = ?"
+        return jdbcTemplate.update(query, post.id, post.authorId) > 0
+    }
+
+    override fun get(postId: String): Post {
+        val query = "SELECT * FROM post WHERE id = ?"
+        return jdbcTemplate.queryForObject(query, PostRowMapper(), postId)!!
+    }
+
     override fun findAllByAuthor(authorId: String): List<Post> {
         val query = "SELECT * FROM post WHERE authorId = ?"
         return jdbcTemplate.query(query, PostRowMapper(), authorId)

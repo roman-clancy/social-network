@@ -18,7 +18,7 @@ class SecurityFilter : Filter {
             filterChain.doFilter(request, response)
             return
         }
-        val authHeader = request.getHeader("Authentication")
+        val authHeader = request.getHeader("authorization")
         if (authHeader.isNullOrBlank() || !authHeader.startsWith("Bearer ")) {
             res.status = HttpStatus.UNAUTHORIZED.value()
             return

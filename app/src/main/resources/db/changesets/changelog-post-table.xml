@@ -7,7 +7,9 @@
     <changeSet author="rsavin" id="2">
         <createTable tableName="post">
             <column name="id"
-                type="varchar(50)"/>
+                    type="varchar(50)">
+                <constraints unique="true"/>
+            </column>
             <column name="text"
                     type="varchar(1000)"/>
             <column name="author_id"

@@ -17,6 +17,25 @@ class PostServiceImpl(
         return postRepository.save(post)
     }
 
+    override fun updatePost(postId: String, authorId: String, text: String) {
+        val post = Post(
+            id = postId,
+            text = text,
+            authorId = authorId
+        )
+        postRepository.update(post)
+    }
+    override fun deletePost(postId: String, authorId: String) {
+        val post = Post(
+            id = postId,
+            authorId = authorId,
+            text = null
+        )
+        postRepository.delete(post)
+    }
+
+    override fun getPost(postId: String): Post = postRepository.get(postId)
+
     override fun findAllByAuthorId(authorId: String): List<Post> =
         postRepository.findAllByAuthor(authorId)
 }
