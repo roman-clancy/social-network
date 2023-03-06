@@ -43,7 +43,7 @@ class PersonRepositoryImpl(
     }
 
     override fun findBySecondNameAndFirstName(secondName: String, firstName: String): List<Person> {
-        val query = "SELECT * FROM person WHERE first_name LIKE ? AND second_name LIKE ?"
-        return jdbcTemplate.query(query, PersonRowMapper(), "$firstName%", "$secondName%")
+        val query = "SELECT * FROM person WHERE second_name LIKE ? AND first_name LIKE ?"
+        return jdbcTemplate.query(query, PersonRowMapper(), "$secondName%", "$firstName%")
     }
 }
