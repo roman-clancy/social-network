@@ -2,6 +2,7 @@ package ru.rsavin.socialnetwork.web.controller
 
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
+import ru.rsavin.socialnetwork.security.SecurityContextHolder
 import ru.rsavin.socialnetwork.service.AuthService
 import ru.rsavin.socialnetwork.service.PersonService
 import ru.rsavin.socialnetwork.web.dto.*
@@ -25,8 +26,8 @@ class PersonController(
         return ResponseEntity.ok(personId)
     }
 
-    @GetMapping("/user/{id}")
-    operator fun get(@PathVariable id: String): ResponseEntity<UserDto?>? {
+    @GetMapping("/user/get/{id}")
+    fun get(@PathVariable id: String): ResponseEntity<UserDto?>? {
         val p = personService.getById(id)
         return ResponseEntity.ok(EntityMapper.fromPerson(p))
     }
@@ -34,6 +35,7 @@ class PersonController(
     @PostMapping("/login")
     fun login(@RequestBody dto: LoginDto): ResponseEntity<TokenResponseDto>? {
         val token = authService.authenticate(dto.id!!, dto.password!!)
+        SecurityContextHolder.add(token, dto.id!!)
         return ResponseEntity.ok(TokenResponseDto(token))
     }
 

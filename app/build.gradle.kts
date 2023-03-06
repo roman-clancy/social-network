@@ -14,6 +14,7 @@ dependencies {
     implementation("commons-io:commons-io:2.11.0")
     implementation("org.liquibase:liquibase-core:4.9.1")
     implementation("org.springframework.security:spring-security-crypto:5.7.3")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.9.8")
     implementation("org.springframework.boot:spring-boot-starter-web:2.7.4")
     implementation("javax.validation:validation-api:2.0.1.Final")
     testImplementation("org.springframework.boot:spring-boot-starter-test:2.7.4")
