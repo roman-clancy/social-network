@@ -30,6 +30,14 @@ class PersonServiceImpl(
         return personRepository.save(person)
     }
 
+    override fun addFriend(personId: String, friendId: String) {
+        personRepository.addFriend(personId, friendId)
+    }
+
+    override fun deleteFriend(personId: String, friendId: String) {
+        personRepository.deleteFriend(personId, friendId)
+    }
+
     override fun search(firstName: String, secondName: String): List<Person> =
         personRepository.findBySecondNameAndFirstName(secondName, firstName)
 

@@ -18,4 +18,6 @@ interface PersonService {
     ): List<Person>
 
     fun getById(id: String): Person
+    fun addFriend(personId: String, friendId: String)
+    fun deleteFriend(personId: String, friendId: String)
 }

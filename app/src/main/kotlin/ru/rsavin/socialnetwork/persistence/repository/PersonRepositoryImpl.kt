@@ -46,4 +46,28 @@ class PersonRepositoryImpl(
         val query = "SELECT * FROM person WHERE second_name LIKE ? AND first_name LIKE ?"
         return jdbcTemplate.query(query, PersonRowMapper(), "$secondName%", "$firstName%")
     }
+
+    override fun addFriend(personId: String, friendId: String) {
+        val query = "INSERT INTO friendship(${Constants.TABLE_ID_COL}, person_id, friend_to) VALUES (?, ?, ?), (?, ?, ?);"
+        jdbcTemplate.update(
+            query,
+            UUID.randomUUID().toString(),
+            personId,
+            friendId,
+            UUID.randomUUID().toString(),
+            friendId,
+            personId
+        )
+    }
+
+    override fun deleteFriend(personId: String, friendId: String) {
+        val query = "DELETE FROM friendship WHERE (person_id = ? AND friend_to = ?) OR (person_id = ? AND friend_to = ?)"
+        jdbcTemplate.update(
+            query,
+            personId,
+            friendId,
+            friendId,
+            personId
+        )
+    }
 }
