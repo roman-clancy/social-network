@@ -1,0 +1,24 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet author="rsavin" id="3">
+        <createTable tableName="friendship">
+            <column name="id"
+                    type="varchar(50)">
+                <constraints unique="true"/>
+            </column>
+            <column name="person_id"
+                    type="varchar(50)">
+                <constraints nullable="false" foreignKeyName="fk_friendship_person" references="person(id)"/>
+            </column>
+            <column name="friend_to"
+                    type="varchar(50)">
+                <constraints nullable="false" foreignKeyName="fk_friendship_friend" references="person(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

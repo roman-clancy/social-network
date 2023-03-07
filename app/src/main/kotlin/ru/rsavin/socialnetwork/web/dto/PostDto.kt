@@ -4,11 +4,8 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategies
 import com.fasterxml.jackson.databind.annotation.JsonNaming
 
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy::class)
-data class UserDto(
+data class PostDto(
     var id: String?,
-    var firstName: String?,
-    var secondName: String?,
-    var age: Int?,
-    var biography: String? = null,
-    var city: String?
+    var text: String?,
+    var authorId: String?
 )

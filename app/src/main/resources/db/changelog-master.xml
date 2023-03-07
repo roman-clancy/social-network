@@ -5,5 +5,7 @@
                    logicalFilePath="db/tspaccount/changelog-master.xml">
 
   <include file="changesets/changelog-person-table.xml" relativeToChangelogFile="true"/>
+  <include file="changesets/changelog-post-table.xml" relativeToChangelogFile="true"/>
+  <include file="changesets/changelog-friendship-table.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>
