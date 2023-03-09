@@ -31,6 +31,6 @@ class SecurityFilter : Filter {
         filterChain.doFilter(request, response)
     }
     companion object {
-        private val allowedUrls = setOf("/login", "/register")
+        private val allowedUrls = setOf("/login", "/register", "/post/cache/reload")
     }
 }

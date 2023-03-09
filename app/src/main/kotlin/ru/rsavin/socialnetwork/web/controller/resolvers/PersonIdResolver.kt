@@ -1,4 +1,4 @@
-package ru.rsavin.socialnetwork.web
+package ru.rsavin.socialnetwork.web.controller.resolvers
 
 import org.springframework.core.MethodParameter
 import org.springframework.web.bind.support.WebDataBinderFactory

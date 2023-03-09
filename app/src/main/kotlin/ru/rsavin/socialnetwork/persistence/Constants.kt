@@ -13,4 +13,5 @@ object Constants {
     const val POST_TABLE = "post"
     const val POST_AUTHOR_ID_COL = "author_id"
     const val POST_TEXT_COL = "text"
+    const val POST_TS_COL = "ts"
 }

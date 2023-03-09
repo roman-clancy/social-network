@@ -46,4 +46,24 @@ class PostController(
         val post = postService.getPost(postId = postId)
         return ResponseEntity.ok(post)
     }
+
+    @GetMapping("/post/feed")
+    fun feed(
+        @PersonId personId: String,
+        @RequestParam("offset") offset: Long = 0,
+        @RequestParam("limit") limit: Long = 1000
+    ): ResponseEntity<List<PostDto>>? {
+        val posts = postService.getFeed(
+            personId = personId,
+            offset = offset,
+            limit = limit
+        )
+        return ResponseEntity.ok(posts.map {
+            PostDto(
+                id = it.id,
+                text = it.text,
+                authorId = it.authorId
+            )
+        })
+    }
 }

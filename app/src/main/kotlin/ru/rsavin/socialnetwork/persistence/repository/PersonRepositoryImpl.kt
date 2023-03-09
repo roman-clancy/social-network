@@ -70,4 +70,13 @@ class PersonRepositoryImpl(
             personId
         )
     }
+
+    override fun findFriends(authorId: String): List<Person> {
+        val query = "SELECT p.* FROM person p WHERE p.id in (SELECT friend_to FROM friendship WHERE person_id = ?)"
+        return jdbcTemplate.query(
+            query,
+            PersonRowMapper(),
+            authorId
+        )
+    }
 }

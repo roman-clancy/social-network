@@ -19,6 +19,10 @@
                 <constraints nullable="false" foreignKeyName="fk_friendship_friend" references="person(id)"/>
             </column>
         </createTable>
+        <addUniqueConstraint
+                columnNames="person_id, friend_to"
+                constraintName="unique_person_friend"
+                tableName="friendship"/>
     </changeSet>
 
 </databaseChangeLog>

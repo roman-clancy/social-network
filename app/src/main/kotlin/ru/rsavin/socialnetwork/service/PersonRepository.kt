@@ -8,4 +8,5 @@ interface PersonRepository {
     fun findBySecondNameAndFirstName(secondName: String, firstName: String): List<Person>
     fun addFriend(personId: String, friendId: String)
     fun deleteFriend(personId: String, friendId: String)
+    fun findFriends(authorId: String): List<Person>
 }
