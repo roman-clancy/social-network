@@ -8,4 +8,5 @@ interface PostService {
     fun deletePost(postId: String, authorId: String)
     fun getPost(postId: String): Post
     fun findAllByAuthorId(authorId: String): List<Post>
+    fun getFeed(personId: String, offset: Long, limit: Long): List<Post>
 }

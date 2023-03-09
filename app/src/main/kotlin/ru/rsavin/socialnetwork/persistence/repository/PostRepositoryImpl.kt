@@ -23,7 +23,7 @@ class PostRepositoryImpl(
             mapOf(
                 "id" to id,
                 Constants.POST_AUTHOR_ID_COL to authorId,
-                Constants.POST_TEXT_COL to text,
+                Constants.POST_TEXT_COL to text
             )
         }
         jdbcInsert.executeBatch(params)

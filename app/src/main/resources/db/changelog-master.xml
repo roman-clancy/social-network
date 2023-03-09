@@ -7,5 +7,6 @@
   <include file="changesets/changelog-person-table.xml" relativeToChangelogFile="true"/>
   <include file="changesets/changelog-post-table.xml" relativeToChangelogFile="true"/>
   <include file="changesets/changelog-friendship-table.xml" relativeToChangelogFile="true"/>
+  <include file="changesets/changelog-add-timestamp-column.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

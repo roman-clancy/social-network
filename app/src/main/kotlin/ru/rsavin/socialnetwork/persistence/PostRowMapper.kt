@@ -8,6 +8,7 @@ class PostRowMapper : RowMapper<Post> {
     override fun mapRow(rs: ResultSet, rowNum: Int): Post = Post(
         id = rs.getString(Constants.TABLE_ID_COL),
         authorId = rs.getString(Constants.POST_AUTHOR_ID_COL),
-        text = rs.getString(Constants.POST_TEXT_COL)
+        text = rs.getString(Constants.POST_TEXT_COL),
+        ts = rs.getTimestamp(Constants.POST_TS_COL)
     )
 }
